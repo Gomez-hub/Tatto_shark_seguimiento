@@ -1,0 +1,551 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tatto Shark</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Favicons
+    ================================================== -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+  <!-- Bootstrap -->
+  <!-- <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css"> -->
+  <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> -->
+
+
+  <!-- Hojas de estilo
+    ================================================== -->
+  
+  <link rel="stylesheet" href="{% static 'css/nivo-lightbox/nivo-lightbox.css' %}">
+  <link rel="stylesheet" href="{% static 'css/nivo-lightbox/default.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <!-- Navegación
+    ==========================================-->
+  <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span
+            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand page-scroll" href="#page-top">Tatto Shark</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#about" class="page-scroll">Informacion</a>
+          </li>
+          <li><a href="#restaurant-menu" class="page-scroll">Diseños</a></li>
+          <li><a href="#portfolio" class="page-scroll">Portafolio</a></li>
+          <li><a href="#team" class="page-scroll">Artistas</a></li>
+          <li><a href="#call-reservation" class="page-scroll">Contacto</a></li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Cerrar sesion</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="/signin" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/signup" class="nav-link">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+  </nav>
+  <!-- Cabecera -->
+  <header id="header">
+    <div class="intro">
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="intro-text">
+              <h1></h1>
+              <p> Descubre el Mundo de los Tatuajes</p>
+              <p> con un Toque de Shark</p>
+              <a href="#about" class="btn btn-custom btn-lg page-scroll">Mas Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Sobre nosotros -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 ">
+          <div class="about-img"><img src="{% static 'img/about.jpg' %}" class="img-responsive" alt=""></div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="about-text">
+            <h2>Descubre Tu Arte Corporal</h2>
+            <hr>
+            <p>
+              Bienvenido a nuestra plataforma de tatuajes online, donde la creatividad y la expresión personal se unen
+              para ofrecerte una experiencia única en el mundo del arte corporal. Navega por nuestra extensa galería de
+              diseños cuidadosamente seleccionados, creados por talentosos artistas de todo el mundo.</p>
+            <h3>Creatividad</h3>
+            <p>¡Explora, imagina y haz realidad tu obra maestra corporal con nosotros!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Menu de tatuajes -->
+  <div id="restaurant-menu">
+    <div class="section-title text-center center">
+      <div class="overlay">
+        <h2>DISEÑOS</h2>
+        <hr>
+        <p>"La creatividad no tiene límites en el mundo de los diseños"</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="menu-section">
+            <h2 class="menu-section-title">BLANCO & NEGRO</h2>
+            <hr>
+            <div class="menu-item">
+              <div class="menu-item-name"> Sombreado Clásico</div>
+              <div class="menu-item-price"> $35 </div>
+              <div class="menu-item-description"> Es un estilo de tatuaje que se caracteriza por su elegante uso de
+                tonos de gris para crear profundidad y detalle en el diseño. </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Monocromo Ink</div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description"> es un estilo de tatuaje que se centra en el uso de un solo color,
+                generalmente negro, para crear diseños impactantes y elegantes.. </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Escala de Grises </div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description"> es un estilo de tatuaje que utiliza diferentes tonos de gris para
+                crear profundidad y realismo en el diseño </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Ink Noir</div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description">es un estilo de tatuaje que se inspira en el cine negro y el arte de la
+                ilustración en blanco y negro. </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="menu-section">
+            <h2 class="menu-section-title">Color Tattoo</h2>
+            <hr>
+            <div class="menu-item">
+              <div class="menu-item-name"> Arcoíris Viviente </div>
+              <div class="menu-item-price"> $45 </div>
+              <div class="menu-item-description"> Es un tatuaje vibrante y colorido que representa un arcoíris en
+                movimiento, con cada color brillante y distintivo</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Delicious Dish </div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed
+                dapibus leo nec ornare diam. </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Sinfonía de Colores</div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description">es un tatuaje que incorpora una amplia gama de colores vibrantes y
+                tonos variados en un diseño artístico. Puede representar una mezcla armoniosa de diferentes colores que
+                se entrelazan y complementan entre sí, creando una composición visualmente impactante y dinámica.</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name">Aurora Brillante</div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description"> sugiere un tatuaje que representa una aurora boreal o aurora
+                australis, ambos fenómenos naturales impresionantes que se producen en las regiones polares de la
+                Tierra. </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="menu-section">
+            <h2 class="menu-section-title">BRAZO</h2>
+            <hr>
+            <div class="menu-item">
+              <div class="menu-item-name"> Manga japonesa</div>
+              <div class="menu-item-price"> $45 </div>
+              <div class="menu-item-description"> es un estilo de tatuaje que se inspira en el arte del manga y el anime
+                japonés. Se caracteriza por líneas definidas, colores vibrantes y personajes icónicos de la cultura
+                japonesa.</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Tribal </div>
+              <div class="menu-item-price"> $350 </div>
+              <div class="menu-item-description"> Diseños de líneas y patrones geométricos o inspirados en culturas
+                indígenas de todo el mundo. </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Realismo</div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description">Tatuajes que representan imágenes hiperrealistas de retratos, paisajes
+                u objetos</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Acuarela </div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description"> Diseños que imitan la apariencia de una pintura acuarela, con colores
+                vibrantes y mezclados.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="menu-section">
+            <h2 class="menu-section-title">Arte & Piernas</h2>
+            <hr>
+            <div class="menu-item">
+              <div class="menu-item-name"> La Dama del Bosque </div>
+              <div class="menu-item-price"> $35 </div>
+              <div class="menu-item-description">Un diseño de una mujer misteriosa rodeada de árboles y naturaleza</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Flor de Loto </div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description">un símbolo de pureza y renacimiento</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Dragón</div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description">Un diseño impresionante que puede serpentear alrededor de la pierna
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-name"> Mariposas </div>
+              <div class="menu-item-price"> $30 </div>
+              <div class="menu-item-description">símbolos de transformación y libertad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Portafolio  -->
+  <div id="portfolio">
+    <div class="section-title text-center center">
+      <div class="overlay">
+        <h2>PORTAFOLIO</h2>
+        <hr>
+        <p>Explora nuestro portafolio de tatuajes</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="categories">
+          <ul class="cat">
+            <li>
+              <ol class="type">
+                <li><a href="#" data-filter="*" class="active">Todos</a></li>
+                <li><a href="#" data-filter=".breakfast">Populares</a></li>
+                <li><a href="#" data-filter=".lunch">Realistas</a></li>
+                <li><a href="#" data-filter=".dinner">Tematica Artistica</a></li>
+              </ol>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="portfolio-items">
+          <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/t2.jpg' %}" title="tatuaje 1"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>ESPALDA COLOR</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/t2.jpg' %}" class="img-responsive" alt="espalda">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 dinner">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/dragon.jpg' %} " title="Dragon"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>DRAGON JAPONES</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/dragon.jpg' %}" class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/arco.jpg' %} " title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Acoíris Viviente</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/arco.jpg' %} " class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/Tribal.jpg' %} " title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Tribal</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/Tribal.jpg' %} " class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 dinner">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/Sinfonia.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Sinfonia</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/Sinfonia.jpg' %} " class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 lunch">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/Realismo.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Mono Realista</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/Realismo.jpg' %}" class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 lunch">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/mariposa.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Mariposa</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/mariposa.jpg' %}
+              " class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/manga_japo.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Manga Japonesa</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/manga_japo.jpg' %}" class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 dinner">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/flor.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Flor</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/flor.jpg' %}" class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 lunch">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/delicius.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Delicius Dish</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/delicius.jpg' %}" class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 lunch">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/damabosque.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Dama Del Bosque</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/damabosque.jpg' %} " class="img-responsive" alt="Project Title">
+                </a> </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
+            <div class="portfolio-item">
+              <div class="hover-bg"> <a href="{% static 'img/portfolio/aurora.jpg' %}" title="Dish Name"
+                  data-lightbox-gallery="gallery1">
+                  <div class="hover-text">
+                    <h4>Aurora</h4>
+                  </div>
+                  <img src="{% static 'img/portfolio/aurora.jpg' %}" class="img-responsive" alt="Project Title"></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sesion del equipo de tatuadores -->
+  <div id="team" class="text-center">
+    <div class="overlay">
+      <div class="container">
+        <div class="col-md-10 col-md-offset-1 section-title">
+          <h2>Nuestros Artistas</h2>
+          <hr>
+          <p>En nuestras manos, tus ideas cobran vida y se convierten en arte.</p>
+        </div>
+        <div id="row">
+          <div class="col-md-4 team">
+            <div class="thumbnail">
+              <div class="team-img"><img src="{% static 'img/team/hombre1.JPG' %}" alt="..."></div>
+              <div class="caption">
+                <h3>Frank Arias</h3>
+                <p>Su estilo versátil abarca desde diseños florales elegantes
+                  hasta composiciones abstractas,
+                  destacando por su creatividad y atención al detalle.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 team">
+            <div class="thumbnail">
+              <div class="team-img"><img src="{% static 'img/team/mujer1.JPG' %}" alt="..."></div>
+              <div class="caption">
+                <h3>Alejandra Torres</h3>
+                <p>Reconocida por su estilo único y detallado</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 team">
+            <div class="thumbnail">
+              <div class="team-img"><img src="{% static 'img/team/99.JPG' %}" alt="..."></div>
+              <div class="caption">
+                <h3>Ethan Gomez</h3>
+                <p>tatuador con una amplia experiencia en el mundo del arte corporal.
+                  Su estilo distintivo se caracteriza por líneas limpias y colores vibrantes, reflejando su pasión por
+                  el diseño gráfico y la cultura urbana.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Reservacion -->
+  <div id="call-reservation" class="text-center">
+    <div class="container">
+      <h2>Haz Tu reservacion<strong> +57 302 6524447</strong></h2>
+    </div>
+  </div>
+  <!-- Sesion de contacto -->
+  <div id="contact" class="text-center">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Contactanos</h2>
+        <hr>
+        <p>Estamos aquí para ayudarte! Completa el formulario a continuación y nos pondremos en contacto contigo pronto.</p>
+      </div>
+      <!-- id="contactForm"  comentarios-->
+      <div class="col-md-10 col-md-offset-1">
+        <form action="" method="post">
+          {% csrf_token %}
+          {{form}}
+          <button type="submit" class="btn btn-custom btn-lg">enviar</button>
+        </form>
+        {{mensaje}}
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container text-center">
+      <div class="col-md-4">
+        <h3>Ubicación</h3>
+        <div class="contact-item">
+          <p>Carrera septima</p>
+          <p>Bogotá</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Horario de atención al cliente</h3>
+        <div class="contact-item">
+          <p>Lunes a viernes: 9:00 am - 6:00 pm</p>
+          <p>Sábados: 10:00 am - 2:00 pm</p>
+          <p>Domingos: Cerrado</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Contact Info</h3>
+        <div class="contact-item">
+          <p>+57 302 6524447</p>
+          <p>+57 321 3295803</p>
+          <p>+57 322 9406576 </p>
+          <p>Email: info@company.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid text-center copyrights">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="social">
+          <ul>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+        <p>&copy; 2024 Todos los derechos reservados: PROYECTO SENA 2024</p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="{% static 'js/jquery.1.11.1.js' %} "></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/SmoothScroll.js' %}"></script>
+  <script type="text/javascript" href="{% static 'js/nivo-lightbox.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+  <!-- <script type="text/javascript" src="{% static 'js/contact_me.js' %}"></script> -->
+
+  <link rel="stylesheet">
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}
